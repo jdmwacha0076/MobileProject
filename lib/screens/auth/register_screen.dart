@@ -20,7 +20,7 @@ class MobileRegisterScreen extends StatelessWidget {
                       Icon(
                         Icons.store,
                         size: 80,
-                        color: Colors.lightGreen,
+                        color: Colors.blue,
                       ),
                       SizedBox(height: 20),
                       Text(
@@ -86,7 +86,7 @@ class MobileRegisterScreen extends StatelessWidget {
                         onPressed: () {},
                         child: Text('Kamilisha usajili'),
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.lightGreen,
+                          primary: Colors.black,
                           textStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -103,7 +103,7 @@ class MobileRegisterScreen extends StatelessWidget {
                             },
                             child: Text(
                               'Ingia',
-                              style: TextStyle(color: Colors.indigo),
+                              style: TextStyle(color: Colors.black),
                             ),
                           ),
                         ],

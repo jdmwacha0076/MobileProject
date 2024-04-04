@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobileproject/screens/auth/login_screen.dart';
+import 'package:mobileproject/screens/views/homepage_screen.dart';
+import 'package:mobileproject/screens/views/register_stock_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,11 +15,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
       ),
-      initialRoute: '/login', // Set the initial route
+      initialRoute: '/login',
       routes: {
-        '/login': (context) => LoginScreen(), // Define routes
-        // Other routes...
+        '/login': (context) => LoginScreen(),
+        '/home': (context) => HomePageScreen(),
+        '/register': (context) => RegisterStockScreen(),
+        // Add more routes as necessary
       },
     );
   }
 }
+

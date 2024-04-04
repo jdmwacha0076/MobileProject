@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'register_screen.dart';
+import 'package:mobileproject/screens/views/homepage_screen.dart';
+import 'package:mobileproject/widgets/custom_app_bar.dart';
+
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -16,11 +19,11 @@ class LoginScreen extends StatelessWidget {
               Icon(
                 Icons.store,
                 size: 80,
-                color: Colors.lightGreen,
+                color: Colors.blue,
               ),
               SizedBox(height: 20),
               Text(
-                'Karibu katika mfumo',
+                'Karibu',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -70,15 +73,21 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePageScreen()),
+                        );
+                      },
                       child: Text('Ingia katika mfumo'),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.lightGreen,
+                        primary: Colors.blue,
                         textStyle: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
+
                     SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -87,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                           onPressed: () {},
                           child: Text(
                             'Umesahau neno siri ?',
-                            style: TextStyle(color: Colors.indigo),
+                            style: TextStyle(color: Colors.black),
                           ),
                         ),
                         SizedBox(width: 50),
@@ -100,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                           },
                           child: Text(
                             'Sajili',
-                            style: TextStyle(color: Colors.indigo),
+                            style: TextStyle(color: Colors.black),
                           ),
                         ),
                       ],
