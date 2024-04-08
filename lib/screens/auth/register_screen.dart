@@ -86,7 +86,7 @@ class MobileRegisterScreen extends StatelessWidget {
                         onPressed: () {},
                         child: Text('Kamilisha usajili'),
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.black,
+                          backgroundColor: Colors.black,
                           textStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),

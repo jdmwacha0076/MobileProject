@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mobileproject/screens/auth/login_screen.dart';
 import 'package:mobileproject/screens/views/homepage_screen.dart';
 import 'package:mobileproject/screens/views/register_stock_screen.dart';
+import 'package:mobileproject/screens/views/update_stocks_screen.dart';
+import 'package:mobileproject/screens/views/view_stocks_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,6 +22,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/home': (context) => HomePageScreen(),
         '/register': (context) => RegisterStockScreen(),
+        '/viewstocks': (context) => ViewStocksPage(),
+        '/updatestocks': (context) => UpdateStocksPage(),
         // Add more routes as necessary
       },
     );

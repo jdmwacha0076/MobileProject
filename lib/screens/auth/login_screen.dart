@@ -81,7 +81,7 @@ class LoginScreen extends StatelessWidget {
                       },
                       child: Text('Ingia katika mfumo'),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
+                        backgroundColor: Colors.blue,
                         textStyle: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
