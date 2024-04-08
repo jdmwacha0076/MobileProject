@@ -12,11 +12,14 @@ class AppHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: Text(title),
-      leading: IconButton(
-        icon: Icon(Icons.menu),
-        onPressed: onMenuPressed,
+    return Container(
+      padding: EdgeInsets.only(top: 20), // Add top padding to adjust position
+      child: AppBar(
+        title: Text(title),
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: onMenuPressed,
+        ),
       ),
     );
   }
