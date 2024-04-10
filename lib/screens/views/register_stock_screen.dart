@@ -16,8 +16,8 @@ class _RegisterStockScreenState extends State<RegisterStockScreen> {
 
   final picker = ImagePicker();
 
-  Future getImage(ImageSource source) async {
-    final pickedFile = await picker.getImage(source: source);
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
     setState(() {
       if (pickedFile != null) {
@@ -33,85 +33,70 @@ class _RegisterStockScreenState extends State<RegisterStockScreen> {
         title: Text(
           'Stock Management',
           style: TextStyle(
-            fontWeight: FontWeight.bold,// Make the text bold
-            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            fontSize: 26,
           ),
         ),
-        backgroundColor: Colors.blue, // Set app bar color to blue
+        backgroundColor: Colors.blue,
       ),
       drawer: Drawer(
-        child: NavigationDrawers(), // Use NavigationDrawer here
+        child: NavigationDrawers(),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 10),
-              Center(
-                child: Padding(
-                  padding: EdgeInsets.only(bottom: 1.0),
-                  child: Text(
-                    'Sajili Item',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 10),
+            Center(
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 1.0),
+                child: Text(
+                  'Register Item',
+                  style: TextStyle(
+                    fontSize: 21,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              SizedBox(height: 10),
-              buildLabel('Stock Name', Icons.label),
-              SizedBox(height: 5),
-              buildTextField(_stockNameController, fontWeight: FontWeight.normal), // Adjust font weight here
-              SizedBox(height: 20),
-              buildLabel('Stock Number', Icons.numbers),
-              SizedBox(height: 5),
-              buildTextField(_stockNumberController, fontWeight: FontWeight.bold), // Adjust font weight here
-              SizedBox(height: 20),
-              buildMediaUploadButton(),
-              SizedBox(height: 20),
-              buildCameraButton(),
-              SizedBox(height: 20),
-              if (_image != null)
-                Image.file(
-                  _image!,
-                  height: 100,
-                ),
-              SizedBox(height: 0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      // Add your form submission logic here
-                    },
-                    child: Row(
-                      children: [
-                        Icon(Icons.check),
-                        SizedBox(width: 15),
-                        Text(
-                          'Submit',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ],
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                    ),
-                  ),
-                ],
+            ),
+            SizedBox(height: 10),
+            buildLabel('Stock Name', Icons.label),
+            SizedBox(height: 5),
+            buildTextField(_stockNameController, 'Enter Stock Name'),
+            SizedBox(height: 20),
+            buildLabel('Stock Number', Icons.confirmation_number),
+            SizedBox(height: 5),
+            buildTextField(_stockNumberController, 'Enter Stock Number'),
+            SizedBox(height: 20),
+            buildMediaUploadButton(),
+            SizedBox(height: 20),
+            if (_image != null)
+              Image.file(
+                _image!,
+                height: 100,
               ),
-            ],
-          ),
+            SizedBox(height: 1.0),
+            ElevatedButton.icon(
+              onPressed: () {
+                // Add logic to submit the item
+              },
+              icon: Icon(
+                Icons.check,
+                color: Colors.white,
+              ), // Add a tick icon
+              label: Text(
+                'Submit',
+                style: TextStyle(
+                  fontSize: 17,
+                  color: Colors.white, // Set text color to white
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue, // background color
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -126,25 +111,24 @@ class _RegisterStockScreenState extends State<RegisterStockScreen> {
           text,
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontSize: 19,
           ),
         ),
       ],
     );
   }
 
-  Widget buildTextField(TextEditingController controller, {FontWeight fontWeight = FontWeight.normal}) {
+  Widget buildTextField(TextEditingController controller, String placeholder) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(5),
       ),
       child: TextField(
         controller: controller,
-        style: TextStyle(fontWeight: fontWeight), // Apply font weight here
         decoration: InputDecoration.collapsed(
-          hintText: 'Enter ${controller == _stockNameController ? 'Stock Name' : 'Stock Number'}',
+          hintText: placeholder,
         ),
       ),
     );
@@ -153,53 +137,22 @@ class _RegisterStockScreenState extends State<RegisterStockScreen> {
   Widget buildMediaUploadButton() {
     return ElevatedButton(
       onPressed: () {
-        getImage(ImageSource.gallery);
+        getImage();
       },
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(Icons.attach_file),
-          SizedBox(width: 15),
+          SizedBox(width: 10),
           Text(
             'Upload Media',
             style: TextStyle(
+              fontSize: 17,
               fontWeight: FontWeight.bold,
+              color: Colors.black,
             ),
           ),
         ],
-      ),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.transparent,
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 21),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
-        ),
-      ),
-    );
-  }
-
-  Widget buildCameraButton() {
-    return ElevatedButton(
-      onPressed: () {
-        getImage(ImageSource.camera);
-      },
-      child: Row(
-        children: [
-          Icon(Icons.camera_alt),
-          SizedBox(width: 15),
-          Text(
-            'Open Camera',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.transparent,
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 21),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
-        ),
       ),
     );
   }
