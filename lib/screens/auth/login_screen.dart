@@ -1,123 +1,152 @@
 import 'package:flutter/material.dart';
-import 'register_screen.dart';
+import 'package:mobileproject/screens/auth/register_screen.dart';
 import 'package:mobileproject/screens/views/homepage_screen.dart';
-import 'package:mobileproject/widgets/custom_app_bar.dart';
 
+void main() {
+  runApp(LoginScreen());
+}
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Login Page',
+      theme: ThemeData(
+        primaryColor: Colors.blue,
+        textTheme: TextTheme(
+          bodyText1: TextStyle(color: Colors.black),
+          bodyText2: TextStyle(color: Colors.black),
+        ),
+      ),
+      home: LoginPage(),
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(20.0),
-        alignment: Alignment.center,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Icon(
-                Icons.store,
-                size: 80,
-                color: Colors.blue,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.blue.shade200, Colors.blue.shade400],
+          ),
+        ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              padding: EdgeInsets.all(20.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  ),
+                ],
               ),
-              SizedBox(height: 20),
-              Text(
-                'Karibu',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 20),
-              Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
+              width: 350,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Icon(
+                    Icons.lock_outline,
+                    size: 100,
+                    color: Colors.blue,
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Welcome',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Barua pepe',
-                        prefixIcon: Icon(Icons.email),
+                  ),
+                  SizedBox(height: 20),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'E-Mail',
+                      prefixIcon: Icon(Icons.email),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  TextFormField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      prefixIcon: Icon(Icons.lock),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePageScreen()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      padding: EdgeInsets.symmetric(vertical: 12),
+                    ),
+                    child: Text(
+                      'Login',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 10),
-                    TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        hintText: 'Neno Siri',
-                        prefixIcon: Icon(Icons.lock),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: false,
-                          onChanged: (value) {},
-                        ),
-                        Text('Kumbuka'),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePageScreen()),
-                        );
-                      },
-                      child: Text('Ingia katika mfumo'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        textStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Umesahau neno siri ?',
-                            style: TextStyle(color: Colors.black),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          // Add logic for forgot password
+                        },
+                        child: Text(
+                          'Forgot Password?',
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
-                        SizedBox(width: 50),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => MobileRegisterScreen()), // Navigate to the register page
-                            );
-                          },
-                          child: Text(
-                            'Sajili',
-                            style: TextStyle(color: Colors.black),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => RegisterScreen()),
+                          );
+                        },
+                        child: Text(
+                          'Create an Account',
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),

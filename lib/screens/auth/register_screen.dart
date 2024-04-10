@@ -1,120 +1,132 @@
 import 'package:flutter/material.dart';
+import 'package:mobileproject/screens/views/homepage_screen.dart';
+import 'login_screen.dart';
 
-class MobileRegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            color: Colors.white.withOpacity(0.8),
+      resizeToAvoidBottomInset: false,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.blue.shade200, Colors.blue.shade400],
           ),
-          SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(top: 100),
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.store,
-                        size: 80,
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(20.0),
+            child: Card(
+              color: Colors.white, // Set the card background color to white
+              elevation: 8.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Icon(
+                      Icons.auto_graph_outlined,
+                      size: 100,
+                      color: Colors.blue,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Register',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
                         color: Colors.blue,
                       ),
-                      SizedBox(height: 20),
-                      Text(
-                        'Tengeneza Akaunti',
+                    ),
+                    SizedBox(height: 20),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'E-Mail',
+                        prefixIcon: Icon(Icons.email),
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        prefixIcon: Icon(Icons.lock),
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        labelText: 'Re-enter Password',
+                        prefixIcon: Icon(Icons.lock),
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePageScreen()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 12),
+                      ),
+                      child: Text(
+                        'Complete Registration',
                         style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(20),
-                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Jina',
-                          prefixIcon: Icon(Icons.person),
+                          fontSize: 18,
+                          color: Colors.white,
                         ),
                       ),
-                      SizedBox(height: 10),
-                      TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Barua pepe',
-                          prefixIcon: Icon(Icons.email),
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hintText: 'Neno siri',
-                          prefixIcon: Icon(Icons.lock),
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hintText: 'Rudiaaaa neno siri',
-                          prefixIcon: Icon(Icons.lock),
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text('Kamilisha usajili'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          textStyle: TextStyle(
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Already have an account?',
+                          style: TextStyle(
+                            fontSize: 17,
                             fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Tayari ulishawahi kujisajili?'),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context); // Navigate back to the previous screen (login page)
-                            },
-                            child: Text(
-                              'Ingia',
-                              style: TextStyle(color: Colors.black),
+                        SizedBox(width: 5),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => LoginPage()),
+                            );
+                          },
+                          child: Text(
+                            'Login',
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue,
                             ),
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }

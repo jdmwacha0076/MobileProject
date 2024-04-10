@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mobileproject/screens/views/aboutme_screen.dart';
 import 'package:mobileproject/screens/views/register_stock_screen.dart';
 import 'package:mobileproject/screens/views/store_all_once_screen.dart';
-import 'package:mobileproject/screens/views/update_product_details_screen.dart';
 import 'package:mobileproject/screens/views/update_stocks_screen.dart';
 import 'package:mobileproject/screens/views/view_stocks_screen.dart';
 import 'package:mobileproject/widgets/menu_container.dart';
+
+
 
 class HomePageScreen extends StatelessWidget {
   @override
@@ -13,9 +15,9 @@ class HomePageScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Stock Management',
-          style: TextStyle(
+            style: TextStyle(
             fontWeight: FontWeight.bold,// Make the text bold
-            fontSize: 22,
+            fontSize: 26,
           ),
         ),
         backgroundColor: Colors.blue, // Set app bar color to blue
@@ -42,7 +44,7 @@ class HomePageScreen extends StatelessWidget {
               },
             ),
             buildLinkContainer(
-              icon: Icons.door_front_door,
+              icon: Icons.door_sliding_rounded,
               text: 'Fungulia Stoo kwa Pamoja',
               description:
               'Bonyeza hapa kuweza kufungulia item(s) zako stoo mpya kwa pamoja. Item(s) husajiliwa katika kila stoo kwa mara moja tu.',
@@ -55,7 +57,7 @@ class HomePageScreen extends StatelessWidget {
               },
             ),
             buildLinkContainer(
-              icon: Icons.view_agenda,
+              icon: Icons.remove_red_eye_rounded,
               text: 'Tazama Items',
               description:
               'Bonyeza hapa kuweza kutazama na kupata taarifa zaidi kuhusu item(s) zilizopo katika stoo.',
@@ -68,7 +70,7 @@ class HomePageScreen extends StatelessWidget {
               },
             ),
             buildLinkContainer(
-              icon: Icons.edit,
+              icon: Icons.app_registration_sharp,
               text: 'Sasisha Items',
               description:
               'Bonyeza hapa kuweza kuongeza au kupunguza item(s) zako kwa kufanya Stock In au Stock Out.',
@@ -94,7 +96,7 @@ class HomePageScreen extends StatelessWidget {
               },
             ),
             buildLinkContainer(
-              icon: Icons.edit_calendar,
+              icon: Icons.person_pin,
               text: 'Kuhusu',
               description:
               'Bonyeza hapa kuweza kuwasiliana na kupatiwa msaada wa kuboresha na kutumia mfumo huu.',
@@ -102,7 +104,7 @@ class HomePageScreen extends StatelessWidget {
                 // Navigate to SasishaItemsScreen on tap
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => UpdateStocksPage()),
+                  MaterialPageRoute(builder: (context) => AboutPage()),
                 );
               },
             ),
@@ -148,7 +150,7 @@ class HomePageScreen extends StatelessWidget {
             Text(
               text,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 21,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Arial', // Apply Arial font family
               ),
@@ -157,7 +159,7 @@ class HomePageScreen extends StatelessWidget {
             Text(
               description,
               style: TextStyle(
-                fontSize: 17,
+                fontSize: 19,
                 fontFamily: 'Arial',
               ),
               textAlign: TextAlign.center, // Align description to the center
